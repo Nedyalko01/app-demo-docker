@@ -5,6 +5,8 @@ import com.example.demo.dto.UserRequest;
 import com.example.demo.dto.UserResponse;
 import com.example.demo.entity.Address;
 import com.example.demo.entity.User;
+import com.fasterxml.jackson.databind.util.BeanUtil;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -22,10 +24,12 @@ public class UserConverter {
     }
 
     public User convertToUser(UserRequest userRequest) {
-
+        // TODO https://mapstruct.org/documentation/installation/
         User user = new User();
         user.setName(userRequest.getName());
         user.setEmail(userRequest.getEmail());
+
+        BeanUtils.copyProperties(userRequest,user);
 
         List<Address> collectedAddresses = userRequest
                 .getAddressRequests()

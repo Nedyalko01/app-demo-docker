@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 
 import com.example.demo.entity.Address;
-import com.example.demo.entity.User;
 import com.example.demo.service.AddressServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

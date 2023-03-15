@@ -12,8 +12,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -29,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> save(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<UserResponse> save(@NotNull @RequestBody UserRequest userRequest) {
 
         User user = userConverter.convertToUser(userRequest);
 
@@ -46,7 +48,7 @@ public class UserController {
         List<UserResponse> users = userServiceImpl.findAll()
                 .stream()
                 .map(userConverter::convertUserToResponse)
-                .toList();
+                .collect(Collectors.toList());
 
         return new ResponseEntity<>(users, HttpStatus.OK);
 

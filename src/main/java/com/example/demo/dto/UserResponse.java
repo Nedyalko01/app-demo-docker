@@ -1,8 +1,6 @@
 package com.example.demo.dto;
 
 import com.example.demo.entity.Address;
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.Size;
 
 import java.util.List;
 

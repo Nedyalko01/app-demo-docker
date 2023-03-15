@@ -1,0 +1,25 @@
+server:
+  port: 8082
+  error:
+    include-message: always
+
+spring:
+  datasource:
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST:127.0.0.1}:3306/demoDB
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    hibernate:
+      ddl-auto: create
+  data:
+    jpa:
+      repositories:
+        enabled: true
+
+  #spring.datasource.url=jdbc:mysql://127.0.0.1:3306/demoDB?createDatabaseIfNotExist=true
